@@ -8,7 +8,6 @@ export function solveDay1(filename: string) {
   const lines = readLines(fullPath);
   const input = parseInput(lines);
 
-  console.log("Day 1");
   console.log(`The solution to part 1 is: ${solvePart1(input)}`);
   console.log(`The solution to part 2 is: ${solvePart2(input)}`);
 }
