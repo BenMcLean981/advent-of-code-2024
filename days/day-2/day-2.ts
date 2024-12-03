@@ -21,16 +21,18 @@ type Input = {
 };
 
 function parseInput(lines: ReadonlyArray<string>): Input {
-  const reports = lines.map(
-    (l): Report => ({
-      levels: l
-        .split(" ")
-        .map((n) => parseInt(n))
-        .filter((n) => !Number.isNaN(n)),
-    })
-  );
+  const reports = lines.map(parseReport);
 
   return { reports };
+}
+
+function parseReport(line: string): Report {
+  const levels = line
+    .split(" ")
+    .map((n) => parseInt(n))
+    .filter((n) => !Number.isNaN(n));
+
+  return { levels };
 }
 
 function solvePart1(input: Input): number {
