@@ -1,8 +1,8 @@
 import * as path from "jsr:@std/path";
 
-import { readLines } from "../utils.ts";
+import { readLines } from "../../utils.ts";
 
-export function solveDay1Part1(filename: string) {
+export function solveDay1(filename: string) {
   const fullPath = path.join(import.meta.dirname ?? "", filename);
 
   const lines = readLines(fullPath);

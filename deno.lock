@@ -2,6 +2,7 @@
   "version": "4",
   "specifiers": {
     "jsr:@std/assert@1": "1.0.8",
+    "jsr:@std/cli@*": "1.0.7",
     "jsr:@std/internal@^1.0.5": "1.0.5",
     "jsr:@std/path@*": "1.0.8"
   },
@@ -11,6 +12,9 @@
       "dependencies": [
         "jsr:@std/internal"
       ]
+    },
+    "@std/cli@1.0.7": {
+      "integrity": "98359df9df586a69015ba570305183b0cb9e7d53c05ea2016ef9a3e77e82c7cd"
     },
     "@std/internal@1.0.5": {
       "integrity": "54a546004f769c1ac9e025abd15a76b6671ddc9687e2313b67376125650dc7ba"
