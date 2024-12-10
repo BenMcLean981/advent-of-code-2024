@@ -11,7 +11,9 @@ export function solveDay6(filename: string) {
   const lines = readLines(fullPath);
   const input = parseInput(lines);
 
-  console.warn("This is slow, but not so slow that I'm going to fix it.");
+  console.warn(
+    "This is slow (1 min), but not so slow that I'm going to fix it."
+  );
   console.log(`The solution to part 1 is: ${solvePart1(input)}`);
   console.log(`The solution to part 2 is: ${solvePart2(input)}`);
 }

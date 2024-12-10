@@ -4,3 +4,4 @@ export * from "./day-3/index.ts";
 export * from "./day-4/index.ts";
 export * from "./day-5/index.ts";
 export * from "./day-6/index.ts";
+export * from "./day-7/index.ts";
