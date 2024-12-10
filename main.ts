@@ -1,4 +1,4 @@
-import { solveDay1, solveDay2, solveDay3 } from "./days/index.ts";
+import { solveDay1, solveDay2, solveDay3, solveDay4 } from "./days/index.ts";
 
 import { parseArgs } from "jsr:@std/cli/parse-args";
 
@@ -24,6 +24,9 @@ if (import.meta.main) {
       break;
     case "3":
       solveDay3(file);
+      break;
+    case "4":
+      solveDay4(file);
       break;
     default:
       throw new Error(`Unsupported day "${day}".`);
