@@ -8,6 +8,12 @@ export class Xy {
     this._y = y;
   }
 
+  public static parse(hash: string): Xy {
+    const xy = JSON.parse(hash);
+
+    return new Xy(xy.x, xy.y);
+  }
+
   public get x(): number {
     return this._x;
   }
@@ -24,8 +30,16 @@ export class Xy {
     return new Xy(this.x * n, this.y * n);
   }
 
+  public clone(): Xy {
+    return new Xy(this.x, this.y);
+  }
+
   public equals(other: Xy): boolean {
     return this.x === other.x && this.y === other.y;
+  }
+
+  public hash(): string {
+    return JSON.stringify({ x: this.x, y: this.y });
   }
 }
 

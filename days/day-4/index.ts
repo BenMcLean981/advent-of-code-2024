@@ -2,6 +2,7 @@ import * as path from "jsr:@std/path";
 
 import { readLines } from "../../utils.ts";
 import { WordSearch } from "./word-search.ts";
+import { Grid } from "../../utils/grid.ts";
 
 export function solveDay4(filename: string) {
   const fullPath = path.join(import.meta.dirname ?? "", filename);
@@ -18,7 +19,7 @@ type Input = {
 };
 
 function parseInput(lines: ReadonlyArray<string>): Input {
-  const wordSearch = new WordSearch(lines.map((l) => l.split("")));
+  const wordSearch = new WordSearch(new Grid(lines.map((l) => l.split(""))));
 
   return { wordSearch };
 }

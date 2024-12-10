@@ -1,24 +1,15 @@
-import { cardinalDirections, diagonalDirections, Xy } from "./position.ts";
+import { Grid } from "../../utils/grid.ts";
+import { cardinalDirections, diagonalDirections, Xy } from "../../utils/xy.ts";
 
 export class WordSearch {
-  private readonly _rows: ReadonlyArray<ReadonlyArray<string>>;
+  private readonly _grid: Grid<string>;
 
-  public constructor(rows: ReadonlyArray<ReadonlyArray<string>>) {
-    this._rows = rows;
-  }
-
-  public get(position: Xy): string | undefined {
-    const row = this._rows[position.y];
-
-    if (row === undefined) {
-      return undefined;
-    } else {
-      return row[position.x];
-    }
+  public constructor(grid: Grid<string>) {
+    this._grid = grid;
   }
 
   public countXmas(): number {
-    return [...this.positions].reduce(
+    return [...this._grid.positions].reduce(
       (sum, pos) => sum + this.countXmasAtPosition(pos),
       0
     );
@@ -32,12 +23,12 @@ export class WordSearch {
 
   private isAlongAxis(word: string, position: Xy, axis: Xy): boolean {
     return [...word].every(
-      (letter, idx) => this.get(position.add(axis.scale(idx))) === letter
+      (letter, idx) => this._grid.get(position.add(axis.scale(idx))) === letter
     );
   }
 
   public countXmasShape(): number {
-    return [...this.positions].reduce(
+    return [...this._grid.positions].reduce(
       (sum, pos) => (this.isMas(pos) ? sum + 1 : sum),
       0
     );
@@ -53,12 +44,6 @@ export class WordSearch {
           this.isAlongAxis(word, position.add(d1), d1.scale(-1)) &&
           this.isAlongAxis(word, position.add(d2), d2.scale(-1))
       )
-    );
-  }
-
-  private get positions(): Iterable<Xy> {
-    return this._rows.flatMap((row, rowIdx) =>
-      row.map((_, colIdx) => new Xy(rowIdx, colIdx))
     );
   }
 }
