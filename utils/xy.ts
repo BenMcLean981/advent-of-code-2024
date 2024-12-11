@@ -26,6 +26,10 @@ export class Xy {
     return new Xy(this.x + xy.x, this.y + xy.y);
   }
 
+  public subtract(xy: Xy): Xy {
+    return new Xy(this.x - xy.x, this.y - xy.y);
+  }
+
   public scale(n: number): Xy {
     return new Xy(this.x * n, this.y * n);
   }

@@ -18,13 +18,20 @@ export class Grid<T> {
   }
 
   public get(position: Xy): T | undefined {
-    const row = this._rows[position.y];
-
-    if (row === undefined) {
+    if (!this.contains(position)) {
       return undefined;
-    } else {
-      return row[position.x];
     }
+
+    return this.rows[position.y][position.x];
+  }
+
+  public contains(position: Xy): boolean {
+    return (
+      position.y >= 0 &&
+      position.y <= this.rows.length - 1 &&
+      position.x >= 0 &&
+      position.x <= this.rows[0].length - 1
+    );
   }
 
   public set(position: Xy, value: T): Grid<T> {
