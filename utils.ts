@@ -18,3 +18,7 @@ export function isEven(n: number): boolean {
 export function isOdd(n: number): boolean {
   return !isEven(n);
 }
+
+export function notUndefined<T>(t: T | undefined): t is T {
+  return t !== undefined;
+}
