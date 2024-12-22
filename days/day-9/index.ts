@@ -3,8 +3,6 @@ import * as path from "jsr:@std/path";
 import { isEven, readLines } from "../../utils.ts";
 import { Block, Disk } from "./disk.ts";
 
-path;
-
 export function solveDay9(filename: string) {
   const fullPath = path.join(import.meta.dirname ?? "", filename);
 

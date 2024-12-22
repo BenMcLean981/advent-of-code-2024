@@ -1,3 +1,4 @@
+import { solveDay10 } from "./days/day-10/index.ts";
 import {
   solveDay1,
   solveDay2,
@@ -52,6 +53,9 @@ if (import.meta.main) {
       break;
     case "9":
       solveDay9(file);
+      break;
+    case "10":
+      solveDay10(file);
       break;
     default:
       throw new Error(`Unsupported day "${day}".`);

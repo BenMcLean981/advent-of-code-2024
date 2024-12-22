@@ -45,6 +45,10 @@ export class Xy {
   public hash(): string {
     return JSON.stringify({ x: this.x, y: this.y });
   }
+
+  public toString(): string {
+    return `(${this._x}, ${this._y})`;
+  }
 }
 
 export const orthogonalDirections = [
