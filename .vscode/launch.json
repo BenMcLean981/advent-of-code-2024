@@ -13,7 +13,7 @@
       "env": {},
       "runtimeExecutable": "/home/ben-mclean/.deno/bin/deno",
       "runtimeArgs": ["run", "--unstable", "--inspect-wait", "--allow-all"],
-      "args": ["10", "--sample"],
+      "args": ["11", "--sample"],
       "attachSimplePort": 9229
     }
   ]
