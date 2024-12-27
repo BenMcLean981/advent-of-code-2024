@@ -1,4 +1,8 @@
-import { orthogonalDirections, Xy } from "../../utils/xy.ts";
+import { Polygon } from "../../utils/geometry/polygon.ts";
+import { Line } from "../../utils/geometry/line.ts";
+import { orthogonalDirections, Xy } from "../../utils/geometry/xy.ts";
+import { connectLines } from "../../utils/geometry/connect-lines.ts";
+import { Polyline } from "../../utils/geometry/polyline.ts";
 
 export class Region {
   private readonly _plant: string;
@@ -17,16 +21,20 @@ export class Region {
     return this._plant;
   }
 
-  public get price(): number {
-    return this.area * this.perimeter;
-  }
-
   public get area(): number {
     return this._positions.length;
   }
 
   public get perimeter(): number {
     return this.calculatePerimeter();
+  }
+
+  public get segments(): ReadonlyArray<Line> {
+    const segments = this._positions
+      .flatMap((p) => this.getBorder(p))
+      .map((s) => Polyline.makeFromLines([s]));
+
+    return connectLines(segments).flatMap((p) => p.lines);
   }
 
   public containsPosition(position: Xy): boolean {
@@ -54,5 +62,27 @@ export class Region {
 
   public merge(other: Region): Region {
     return new Region(this._plant, [...this._positions, ...other._positions]);
+  }
+
+  private getBorder(p: Xy): ReadonlyArray<Line> {
+    const result: Array<Line> = [];
+
+    if (!this.containsPosition(p.add(new Xy(1, 0)))) {
+      result.push(new Line(p.add(new Xy(1, 0)), p.add(new Xy(1, 1))));
+    }
+
+    if (!this.containsPosition(p.add(new Xy(-1, 0)))) {
+      result.push(new Line(p, p.add(new Xy(0, 1))));
+    }
+
+    if (!this.containsPosition(p.add(new Xy(0, -1)))) {
+      result.push(new Line(p, p.add(new Xy(1, 0))));
+    }
+
+    if (!this.containsPosition(p.add(new Xy(0, 1)))) {
+      result.push(new Line(p.add(new Xy(0, 1)), p.add(new Xy(1, 1))));
+    }
+
+    return result;
   }
 }

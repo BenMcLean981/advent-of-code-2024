@@ -1,6 +1,6 @@
 import { Grid } from "../../utils/grid.ts";
 import { makeAllPairs, Pair } from "../../utils/pair.ts";
-import { Xy } from "../../utils/xy.ts";
+import { Xy } from "../../utils/geometry/xy.ts";
 
 export type CellContent =
   | { type: "Empty" }

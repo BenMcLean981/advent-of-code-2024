@@ -1,5 +1,5 @@
 import { Grid } from "../../utils/grid.ts";
-import { orthogonalDirections, Xy } from "../../utils/xy.ts";
+import { orthogonalDirections, Xy } from "../../utils/geometry/xy.ts";
 
 export class Map {
   private readonly _grid: Grid<number>;

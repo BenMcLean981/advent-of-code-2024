@@ -1,4 +1,4 @@
-import { Xy } from "./xy.ts";
+import { Xy } from "./geometry/xy.ts";
 
 export class Grid<T> {
   private readonly _rows: ReadonlyArray<ReadonlyArray<T>>;

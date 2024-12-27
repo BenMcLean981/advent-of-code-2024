@@ -2,7 +2,7 @@ import * as path from "jsr:@std/path";
 
 import { readLines } from "../../utils.ts";
 import { Grid } from "../../utils/grid.ts";
-import { Xy } from "../../utils/xy.ts";
+import { Xy } from "../../utils/geometry/xy.ts";
 import { CellContent, Guard, Map } from "./map.ts";
 
 export function solveDay6(filename: string) {

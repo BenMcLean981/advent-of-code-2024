@@ -2,7 +2,7 @@ import { isEmpty, last } from "../collections/array.ts";
 import { equalInOrderCircular } from "../collections/index.ts";
 import { Equalable } from "../equalable.ts";
 import { isZero } from "../equality-checks.ts";
-import { makeAllPairs } from "../pair.ts";
+import { makePairs } from "../pair.ts";
 import { TOL } from "../tol.ts";
 import { compressLines } from "./compress-lines.ts";
 import { Line } from "./line.ts";
@@ -25,7 +25,7 @@ export class Polygon implements Equalable {
   }
 
   public static makeFromPoints(points: Array<Xy>): Polygon {
-    const lines = makeAllPairs(points)
+    const lines = makePairs(points)
       .map((p) => new Line(p[0], p[1]))
       .filter((line) => !isZero(line.length));
 
@@ -49,7 +49,7 @@ export class Polygon implements Equalable {
     return new Polygon(points);
   }
 
-  public get compress(): Polygon {
+  public compress(): Polygon {
     return Polygon.makeFromLines(compressLines(this.lines));
   }
 

@@ -1,7 +1,7 @@
 import { first, last, isEmpty } from "../collections/array.ts";
 import { equalInOrder } from "../collections/index.ts";
 import { isZero } from "../equality-checks.ts";
-import { makeAllPairs } from "../pair.ts";
+import { makePairs } from "../pair.ts";
 import { TOL } from "../tol.ts";
 import { compressLines } from "./compress-lines.ts";
 import { ContainmentConfig } from "./containment-config.ts";
@@ -27,7 +27,7 @@ export class Polyline {
   }
 
   public static makeFromPoints(points: Array<Xy>): Polyline {
-    const lines = makeAllPairs(points)
+    const lines = makePairs(points)
       .map((p) => new Line(p[0], p[1]))
       .filter((line) => !isZero(line.length));
 
@@ -65,6 +65,10 @@ export class Polyline {
     } else {
       return Polyline.makeFromLines(compressedLines);
     }
+  }
+
+  public reverse(): Polyline {
+    return Polyline.makeFromPoints(this.points.toReversed());
   }
 
   public translate(vec: Xy): Polyline {

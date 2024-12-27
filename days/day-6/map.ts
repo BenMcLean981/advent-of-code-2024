@@ -1,5 +1,5 @@
 import { Grid } from "../../utils/grid.ts";
-import { Xy } from "../../utils/xy.ts";
+import { Xy } from "../../utils/geometry/xy.ts";
 
 export type Guard = {
   position: Xy;

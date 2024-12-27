@@ -2,7 +2,7 @@ import * as path from "jsr:@std/path";
 
 import { readLines } from "../../utils.ts";
 import { Grid } from "../../utils/grid.ts";
-import { Xy } from "../../utils/xy.ts";
+import { Xy } from "../../utils/geometry/xy.ts";
 import { Region } from "./region.ts";
 
 export function solveDay12(filename: string) {
@@ -36,11 +36,16 @@ function solvePart1(input: Input): number {
   const regions = getRegions(input.garden);
   const merged = mergeRegions(regions);
 
-  return merged.map((r) => r.price).reduce((sum, n) => sum + n);
+  return merged.map((r) => r.area * r.perimeter).reduce((sum, n) => sum + n);
 }
 
 function solvePart2(input: Input): number {
-  return 0;
+  const regions = getRegions(input.garden);
+  const merged = mergeRegions(regions);
+
+  return merged
+    .map((r) => r.area * r.segments.length)
+    .reduce((sum, n) => sum + n);
 }
 
 function getRegions(garden: Grid<string>): ReadonlyArray<Region> {

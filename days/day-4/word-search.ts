@@ -1,5 +1,9 @@
 import { Grid } from "../../utils/grid.ts";
-import { cardinalDirections, diagonalDirections, Xy } from "../../utils/xy.ts";
+import {
+  cardinalDirections,
+  diagonalDirections,
+  Xy,
+} from "../../utils/geometry/xy.ts";
 
 export class WordSearch {
   private readonly _grid: Grid<string>;
